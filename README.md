@@ -22,3 +22,7 @@ a few key features of this project:
 ## getting started
 
 ## contributing
+
+## footnotes
+
+made with 🫀 by @enkyuan
