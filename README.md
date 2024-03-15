@@ -2,7 +2,7 @@
 
 ## about
 
-this is the second generation of the Cinco Ranch Mobile Parking App and its third iteration. the project is built with a monolith software architecture with the following technology stack:
+the project is built with a monolith software architecture using the following technology stack:
 
 | Technology      | Function         |
 | --------------- | ---------------- |
