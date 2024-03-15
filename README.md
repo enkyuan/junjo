@@ -25,4 +25,4 @@ a few key features of this project:
 
 ## footnotes
 
-made with 💕 by @enkyuan
+made with ♥️ by @enkyuan
