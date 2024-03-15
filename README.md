@@ -12,7 +12,7 @@ this is the second generation of the Cinco Ranch Mobile Parking App and its thir
 | Express + Node  | api              |
 | Pocketbase      | database         |
 
-a few key features of the app:
+a few key features of this project:
 
 - authentication with the katyisd student domain
 - secure + efficient payment processor
