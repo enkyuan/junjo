@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Pressable, View, Text, FlatList } from "react-native";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import BottomSheet from "@gorhom/bottom-sheet";
 import tw from "twrnc";
 
 export default function Home() {
@@ -9,10 +9,10 @@ export default function Home() {
   return (
     <View style={tw`flex-1 p-24 bg-gray-200`}>
       <BottomSheet snapPoints={snapPoints}>
-        <FlatList horizontal={true}>
-          <Pressable style={tw`bg-gray-400 m-2 rounded-lg`}></Pressable>
-          <Pressable></Pressable>
-        </FlatList>
+        <View style={tw`flex-row justify-evenly h-full px-4`}>
+          <Pressable style={tw`bg-gray-200 w-1/2 mr-2 h-32 rounded-2xl`} />
+          <Pressable style={tw`bg-emerald-300 w-1/2 ml-2 h-32 rounded-2xl`} />
+        </View>
       </BottomSheet>
     </View>
   );
