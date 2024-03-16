@@ -38,7 +38,8 @@ export default function SignUp() {
   }
 
   async function handleSignUp(email: string, password: string) {
-    const username = nameRegex.exec(email);
+    const match = nameRegex.exec(email);
+    const username = match ? match[0] : "";
     const data = {
       email: email,
       username: username,

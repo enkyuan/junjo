@@ -3,25 +3,23 @@ import { Pressable, View, Text } from "react-native";
 import { Card } from "react-native-paper";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import BottomSheet from "@gorhom/bottom-sheet";
+import { useRouter } from "expo-router";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import pb from "../../pb.config";
 import tw from "twrnc";
 
 export default function Home() {
+  const router = useRouter();
   const snapPoints = useMemo(() => ["25%", "50%"], []);
 
   async function handleSignOut() {
     pb.authStore.clear();
+    router.navigate("/pages/signin");
   }
 
   return (
-    <GestureHandlerRootView style={tw`flex-1 p-24 bg-gray-200`}>
-      <View style={tw`flex-1 items-start justify-start`}>
-        <Pressable style={tw`pt-32`} onPress={() => handleSignOut()}>
-          <Ionicons name="exit-outline" size={64} color="black" />
-        </Pressable>
-      </View>
-      <BottomSheet snapPoints={snapPoints}>
+    <GestureHandlerRootView style={tw`flex-1 bg-gray-200`}>
+      <BottomSheet snapPoints={snapPoints} style={tw`rounded-3xl`}>
         <View style={tw`flex-1 items-center justify-between px-4 mt-4`}>
           <View style={tw`flex-row justify-between`}>
             <Pressable
@@ -35,7 +33,8 @@ export default function Home() {
               />
             </Pressable>
             <Pressable
-              style={tw`bg-emerald-300 w-1/2 ml-4 h-36 rounded-3xl justify-between`}
+              style={tw`bg-emerald-400 w-1/2 ml-4 h-36 rounded-3xl justify-between`}
+              onPress={() => router.navigate("/pages/payment")}
             >
               <Text
                 style={tw`text-3xl text-white font-bold items-start pt-4 pl-4`}
@@ -52,15 +51,25 @@ export default function Home() {
               </View>
             </Pressable>
           </View>
-          <Card
-            style={tw`m-8 w-full h-40 rounded-3xl justify-start bg-white shadow-none`}
-          >
-            <Card.Content>
-              <Text style={tw`text-4xl text-center font-semibold`}>
-                Location
+          <View style={tw`flex-col justify-between items-center py-8`}>
+            <Card style={tw`h-1/3 w-88 rounded-3xl bg-white shadow-none`}>
+              <Card.Content>
+                <Text
+                  style={tw`inline-block text-2xl text-center align-middle font-semibold`}
+                >
+                  Pick a spot to get started
+                </Text>
+              </Card.Content>
+            </Card>
+            <Pressable
+              style={tw`w-full h-1/2 rounded-full bg-white`}
+              onPress={() => handleSignOut()}
+            >
+              <Text style={tw`text-3xl text-red-500 font-semibold`}>
+                Log Out
               </Text>
-            </Card.Content>
-          </Card>
+            </Pressable>
+          </View>
         </View>
       </BottomSheet>
     </GestureHandlerRootView>
