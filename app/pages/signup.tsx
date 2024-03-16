@@ -1,5 +1,6 @@
 import React from "react";
 import { Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
+import { Link } from "expo-router";
 import tw from "twrnc";
 
 export default function SignUp() {
@@ -23,6 +24,7 @@ export default function SignUp() {
           mb-4
           text-xl`}
           placeholder="Email"
+          placeholderTextColor="gray"
         />
         <TextInput
           style={tw`border-2 
@@ -33,6 +35,7 @@ export default function SignUp() {
           mb-4
           text-xl`}
           placeholder="Password"
+          placeholderTextColor="gray"
         />
         <TextInput
           style={tw`border-2 
@@ -43,10 +46,14 @@ export default function SignUp() {
           mb-4 
           text-xl`}
           placeholder="Confirm Password"
+          placeholderTextColor="gray"
         />
         <Text style={tw`text-xl mb-40 font-semibold`}>
           Have an account?
-          <Text style={tw`text-blue-500`}> Login </Text>
+          <Link href={"/signin"} style={tw`text-blue-500`}>
+            {" "}
+            Login{" "}
+          </Link>
         </Text>
         <Pressable
           style={tw`bg-emerald-400

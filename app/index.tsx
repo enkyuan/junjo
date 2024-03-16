@@ -1,15 +1,12 @@
-import SignIn from "./src/pages/signin";
-import { View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import tw from "twrnc";
-import SignUp from "./src/pages/signup";
-import Home from "./src/pages/home";
+import SignUp from "./pages/signup";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function App() {
   return (
     <GestureHandlerRootView style={tw`flex-1`}>
-      <Home />
+      <SignUp />
       <StatusBar style="auto" />
     </GestureHandlerRootView>
   );

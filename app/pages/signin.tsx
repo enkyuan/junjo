@@ -21,8 +21,10 @@ export default function SignIn() {
           h-16 
           px-8
           mb-4 
-          text-xl`}
+          text-xl
+          `}
           placeholder="Email"
+          placeholderTextColor="gray"
         />
         <TextInput
           style={tw`border-2
@@ -34,6 +36,7 @@ export default function SignIn() {
           text-xl
           align-middle`}
           placeholder="Password"
+          placeholderTextColor="gray"
         />
         <Text style={tw`text-xl mb-40 font-semibold`}>
           New?
