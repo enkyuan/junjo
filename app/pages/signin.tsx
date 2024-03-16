@@ -1,31 +1,15 @@
 import React, { useState, FormEvent } from "react";
 import { Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
+import AuthProvider from "../auth.provider";
 import { useRouter, Link } from "expo-router";
 import pb from "../../pb.config";
 import tw from "twrnc";
 
 export default function SignIn() {
   const router = useRouter();
+  const authProvider = AuthProvider();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setLoading] = useState(false);
-
-  async function handleSignIn(email: string, password: string) {
-    try {
-      const authData = await pb
-        .collection("users")
-        .authWithPassword(email, password);
-      router.navigate("/pages/home");
-      return authData;
-    } catch (error: any) {
-      alert(error.message);
-
-      if (error.message.toString() === "Failed to authenticate.") {
-        router.navigate("/pages/signup");
-      }
-    }
-    return isLoading;
-  }
 
   return (
     <SafeAreaView>
@@ -83,7 +67,7 @@ export default function SignIn() {
           justify-center
           items-center
           rounded-lg`}
-          onPress={() => handleSignIn(email, password)}
+          onPress={() => authProvider.handleSignIn(email, password)}
         >
           <Text style={tw`text-white text-center text-2xl font-bold`}>
             Continue

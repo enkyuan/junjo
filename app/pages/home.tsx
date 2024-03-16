@@ -5,17 +5,14 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useRouter } from "expo-router";
 import { Ionicons, Feather } from "@expo/vector-icons";
+import AuthProvider from "../auth.provider";
 import pb from "../../pb.config";
 import tw from "twrnc";
 
 export default function Home() {
   const router = useRouter();
+  const authProvider = AuthProvider();
   const snapPoints = useMemo(() => ["25%", "50%"], []);
-
-  async function handleSignOut() {
-    pb.authStore.clear();
-    router.navigate("/pages/signin");
-  }
 
   return (
     <GestureHandlerRootView style={tw`flex-1 bg-gray-200`}>
@@ -55,7 +52,7 @@ export default function Home() {
             <Card style={tw`h-1/3 w-88 rounded-3xl bg-white shadow-none`}>
               <Card.Content>
                 <Text
-                  style={tw`inline-block text-2xl text-center align-middle font-semibold`}
+                  style={tw`text-2xl text-center align-middle font-semibold`}
                 >
                   Pick a spot to get started
                 </Text>
@@ -63,7 +60,7 @@ export default function Home() {
             </Card>
             <Pressable
               style={tw`w-full h-1/2 rounded-full bg-white`}
-              onPress={() => handleSignOut()}
+              onPress={() => authProvider.handleSignOut()}
             >
               <Text style={tw`text-3xl text-red-500 font-semibold`}>
                 Log Out

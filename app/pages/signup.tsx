@@ -1,63 +1,17 @@
 import React, { useState } from "react";
 import { Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
 import { useRouter, Link } from "expo-router";
+import AuthProvider from "../auth.provider";
 import pb from "../../pb.config";
 import tw from "twrnc";
 
 export default function SignUp() {
   const router = useRouter();
-  const nameRegex = new RegExp("/^[a-zA-Z][0-9]{7}/");
-  const emailRegex = new RegExp("^[a-zA-Z][0-9]{7}@students.katyisd.org$");
+  const authProvider = AuthProvider();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-
-  function isValidEmail(email: string) {
-    if (emailRegex.test(email) === true) {
-      return true;
-    }
-
-    alert("Invalid email");
-    console.log(email);
-
-    return false;
-  }
-
-  function isValidPassword(password: string, passwordConfirm: string) {
-    if (password !== passwordConfirm) {
-      alert("Passwords do not match");
-      return false;
-    } else if (password.length < 8) {
-      alert("Password must be at least 8 characters");
-      return false;
-    }
-    console.log(password, passwordConfirm);
-
-    return true;
-  }
-
-  async function handleSignUp(email: string, password: string) {
-    const match = nameRegex.exec(email);
-    const username = match ? match[0] : "";
-    const data = {
-      email: email,
-      username: username,
-      password: password,
-      passwordConfirm: passwordConfirm,
-    };
-
-    if (isValidEmail(email) && isValidPassword(password, passwordConfirm)) {
-      try {
-        await pb.collection("users").create(data);
-        router.navigate("/pages/home");
-      } catch (error: any) {
-        alert(error.message);
-      }
-    }
-
-    console.log(username, data);
-  }
 
   return (
     <SafeAreaView>
@@ -125,7 +79,9 @@ export default function SignUp() {
           justify-center
           items-center
           rounded-lg`}
-          onPress={() => handleSignUp(email, password)}
+          onPress={() =>
+            authProvider.handleSignUp(email, password, passwordConfirm)
+          }
         >
           <Text style={tw`text-white text-center text-2xl font-bold`}>
             Continue
