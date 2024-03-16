@@ -28,7 +28,7 @@ export default function Home() {
                 style={tw`bg-emerald-300 w-1/2 ml-4 h-36 rounded-3xl justify-between`}
               >
                 <Text style={tw`text-3xl font-bold items-start pt-4 pl-4`}>
-                  Buy
+                  Pay
                 </Text>
                 <View style={tw`items-end`}>
                   <Feather

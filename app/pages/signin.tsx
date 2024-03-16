@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState, FormEvent } from "react";
 import { Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
+import { useRouter, Link } from "expo-router";
+import { pb } from "pocketbase.config.ts";
 import tw from "twrnc";
 
 export default function SignIn() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState(false);
+
   return (
     <SafeAreaView>
       <View style={tw`flex flex-col justify-center items-center`}>
@@ -19,28 +26,38 @@ export default function SignIn() {
           rounded-lg 
           w-80 
           h-16 
-          px-8
+          pl-4
           mb-4 
           text-xl
           `}
+          maxLength={29}
           placeholder="Email"
+          value={email}
           placeholderTextColor="gray"
+          onChangeText={(text) => setEmail(text)}
         />
         <TextInput
           style={tw`border-2
           rounded-lg
           w-80
           h-16
-          px-8
+          pl-4
           mb-4
           text-xl
           align-middle`}
+          maxLength={20}
           placeholder="Password"
+          secureTextEntry={true}
+          value={password}
           placeholderTextColor="gray"
+          onChangeText={(text) => setPassword(text)}
         />
         <Text style={tw`text-xl mb-40 font-semibold`}>
           New?
-          <Text style={tw`text-blue-500`}> Register </Text>
+          <Link href={"/pages/signup"} style={tw`text-blue-500`}>
+            {" "}
+            Register{" "}
+          </Link>
         </Text>
         <Pressable
           style={tw`bg-emerald-400
@@ -49,6 +66,7 @@ export default function SignIn() {
           justify-center
           items-center
           rounded-lg`}
+          onPress={() => handleSignIn(email, password)}
         >
           <Text style={tw`text-white text-center text-2xl font-bold`}>
             Continue

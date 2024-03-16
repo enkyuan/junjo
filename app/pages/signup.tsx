@@ -1,6 +1,7 @@
 import React from "react";
 import { Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
 import { Link } from "expo-router";
+import pb from "pocketbase";
 import tw from "twrnc";
 
 export default function SignUp() {
@@ -50,7 +51,7 @@ export default function SignUp() {
         />
         <Text style={tw`text-xl mb-40 font-semibold`}>
           Have an account?
-          <Link href={"/signin"} style={tw`text-blue-500`}>
+          <Link href={"/pages/signin"} style={tw`text-blue-500`}>
             {" "}
             Login{" "}
           </Link>
