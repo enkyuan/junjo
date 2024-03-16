@@ -11,7 +11,6 @@ export default function SignIn() {
   const [isLoading, setLoading] = useState(false);
 
   async function handleSignIn(email: string, password: string) {
-    setLoading(true);
     try {
       const authData = await pb
         .collection("users")
@@ -21,11 +20,10 @@ export default function SignIn() {
     } catch (error: any) {
       alert(error.message);
 
-      if (error.message.toString() === "failed to authenticate") {
+      if (error.message.toString() === "Failed to authenticate.") {
         router.navigate("/pages/signup");
       }
     }
-    setLoading(false);
     return isLoading;
   }
 

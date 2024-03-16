@@ -10,10 +10,14 @@ import tw from "twrnc";
 export default function Home() {
   const snapPoints = useMemo(() => ["25%", "50%"], []);
 
+  async function handleSignOut() {
+    pb.authStore.clear();
+  }
+
   return (
     <GestureHandlerRootView style={tw`flex-1 p-24 bg-gray-200`}>
       <View style={tw`flex-1 items-start justify-start`}>
-        <Pressable style={tw`pt-32`} onPress={() => pb.authStore.clear()}>
+        <Pressable style={tw`pt-32`} onPress={() => handleSignOut()}>
           <Ionicons name="exit-outline" size={64} color="black" />
         </Pressable>
       </View>

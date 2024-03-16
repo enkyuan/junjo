@@ -6,48 +6,56 @@ import tw from "twrnc";
 
 export default function SignUp() {
   const router = useRouter();
+  const nameRegex = new RegExp("/^[a-zA-Z][0-9]{7}/");
+  const emailRegex = new RegExp("^[a-zA-Z][0-9]{7}@students.katyisd.org$");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [isLoading, setLoading] = useState(false);
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
   function isValidEmail(email: string) {
-    const emailRegex = new RegExp("/^[a-zA-Z][0-9]{7}@students.katyisd.org$/");
-    if (emailRegex.test(email) === false) {
-      alert("Invalid email");
-      return false;
+    if (emailRegex.test(email) === true) {
+      return true;
     }
 
-    return true;
+    alert("Invalid email");
+    console.log(email);
+
+    return false;
   }
 
-  function isValidPassword(password: string, confirmPassword: string) {
-    if (password !== confirmPassword) {
+  function isValidPassword(password: string, passwordConfirm: string) {
+    if (password !== passwordConfirm) {
       alert("Passwords do not match");
       return false;
     } else if (password.length < 8) {
       alert("Password must be at least 8 characters");
       return false;
     }
+    console.log(password, passwordConfirm);
 
     return true;
   }
 
   async function handleSignUp(email: string, password: string) {
-    if (isValidEmail(email) && isValidPassword(password, confirmPassword)) {
-      setLoading(true);
+    const username = nameRegex.exec(email);
+    const data = {
+      email: email,
+      username: username,
+      password: password,
+      passwordConfirm: passwordConfirm,
+    };
+
+    if (isValidEmail(email) && isValidPassword(password, passwordConfirm)) {
       try {
-        const authData = await pb
-          .collection("users")
-          .authWithPassword(email, password);
+        await pb.collection("users").create(data);
         router.navigate("/pages/home");
-        return authData;
       } catch (error: any) {
         alert(error.message);
       }
-      setLoading(false);
-      return isLoading;
     }
+
+    console.log(username, data);
   }
 
   return (
@@ -98,9 +106,9 @@ export default function SignUp() {
           text-xl`}
           placeholder="Confirm Password"
           secureTextEntry={true}
-          value={confirmPassword}
+          value={passwordConfirm}
           placeholderTextColor="gray"
-          onChangeText={(text) => setConfirmPassword(text)}
+          onChangeText={(text) => setPasswordConfirm(text)}
         />
         <Text style={tw`text-xl mb-40 font-semibold`}>
           Have an account?
