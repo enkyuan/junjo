@@ -10,7 +10,7 @@
 
 the project is built with a monolith software architecture using the following technology stack:
 
-| Technology        | Function           |
+| Tool              | Function           |
 | :---------------: | :----------------: |
 | Expo              | frontend           |
 | Redux             | state management   |
