@@ -7,6 +7,9 @@
   <a href="https://stripe.com/">
     <img src="https://img.shields.io/badge/Stripe-626CD9?style=for-the-badge&logo=Stripe&logoColor=white" alt="Stripe"/>
   </a>
+  <a href="https://www.openstreetmap.org/about">
+    <img src="https://img.shields.io/badge/OpenStreetMap-7EBC6F?style=for-the-badge&logo=OpenStreetMap&logoColor=white" alt="Open Street Map"/>
+  </a>
 </div>
 
 ## about
