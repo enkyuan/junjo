@@ -12,12 +12,12 @@ the project is built with a monolith software architecture using the following t
 
 | Technology        | Function           |
 | :---------------: | :----------------: |
-| Expo            | frontend         |
-| Redux           | state management |
-| Maptiler        | geolocation      |
-| Express + Node  | api              |
-| Pocketbase      | database         |
-| Stripe          | payments         |
+| Expo              | frontend           |
+| Redux             | state management   |
+| Maptiler          | geolocation        |
+| Express + Node    | api                |
+| Pocketbase        | database           |
+| Stripe            | payments           |
 
 a few key features of this project:
 
