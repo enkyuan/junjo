@@ -1,7 +1,8 @@
 import express from "express";
+import config from "./config.js";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = config.port;
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

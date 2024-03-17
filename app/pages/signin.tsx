@@ -1,12 +1,10 @@
 import React, { useState, FormEvent } from "react";
 import { Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
 import AuthProvider from "../auth.provider";
-import { useRouter, Link } from "expo-router";
-import pb from "../../pb.config";
+import { Link } from "expo-router";
 import tw from "twrnc";
 
 export default function SignIn() {
-  const router = useRouter();
   const authProvider = AuthProvider();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

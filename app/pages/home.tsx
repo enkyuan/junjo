@@ -6,7 +6,6 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import { useRouter } from "expo-router";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import AuthProvider from "../auth.provider";
-import pb from "../../pb.config";
 import tw from "twrnc";
 
 export default function Home() {

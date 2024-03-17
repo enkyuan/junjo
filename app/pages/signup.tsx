@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
-import { useRouter, Link } from "expo-router";
+import { Link } from "expo-router";
 import AuthProvider from "../auth.provider";
-import pb from "../../pb.config";
 import tw from "twrnc";
 
 export default function SignUp() {
-  const router = useRouter();
   const authProvider = AuthProvider();
 
   const [email, setEmail] = useState("");
