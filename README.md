@@ -8,9 +8,10 @@ the project is built with a monolith software architecture using the following t
 | --------------- | ---------------- |
 | Expo            | frontend         |
 | Redux           | state management |
-| RN Maps         | geolocation      |
+| Maptiler        | geolocation      |
 | Express + Node  | api              |
 | Pocketbase      | database         |
+| Stripe          | payments         |
 
 a few key features of this project:
 
