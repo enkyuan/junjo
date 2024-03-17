@@ -1,5 +1,7 @@
 # junjo
 
+https://img.shields.io/badge/Expo-1B1F23?style=for-the-badge&logo=expo&logoColor=white
+
 ## about
 
 the project is built with a monolith software architecture using the following technology stack:
