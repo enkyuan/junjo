@@ -1,11 +1,15 @@
+import "dotenv/config";
 import express from "express";
-import config from "./config.js";
+import cors from "cors";
+import dotenv from "dotenv";
 
 const app = express();
-const port = config.port;
+app.use(express.json());
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+  console.log("Server Listening on port", PORT);
 });
 
-console.log("Server running on port", process.env.PORT);
+export default app;
