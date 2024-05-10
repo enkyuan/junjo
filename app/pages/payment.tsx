@@ -11,6 +11,7 @@ export default function Payment() {
     <SafeAreaView>
       <View style={tw`flex flex-col justify-center items-center`}>
         <Text style={tw`text-2xl text-center font-bold`}>Payment Page</Text>
+
         <Pressable
           style={tw`bg-emerald-400
           w-40
